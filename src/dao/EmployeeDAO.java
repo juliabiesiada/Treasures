@@ -6,7 +6,7 @@ public interface EmployeeDAO {
 	
 	Employee getEmployee(int id);
 	List<Employee> getEmployees();
-	boolean addEmployee(Employee employee);
+	String addEmployee(Employee employee);
 	boolean updateEmployee(Employee employee);
 	int getEmployeeID(Employee employee);
 }
