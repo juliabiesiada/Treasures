@@ -27,10 +27,6 @@ public class DataBaseConnect {
 		return conn;
 	}
 	
-	public Connection getConnection() {
-		return conn;
-	}
-	
 	public void closeConnection() {
 		
 		if (conn != null) {
