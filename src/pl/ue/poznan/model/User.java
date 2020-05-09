@@ -1,4 +1,4 @@
-package myjava;
+package pl.ue.poznan.model;
 
 import java.sql.Date;
 
@@ -14,11 +14,26 @@ public class User {
 	String street;
 	String postcode;
 	String phonenumber;
+	String email;
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	String password;
+	String passwordConfirm;
+	
+	public String getPasswordConfirm() {
+		return passwordConfirm;
+	}
+	public void setPasswordConfirm(String passwordConfirm) {
+		this.passwordConfirm = passwordConfirm;
+	}
 	public Integer getId() {
 		return id;
 	}
-	public void setUid(Integer id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getUsername() {
@@ -81,8 +96,9 @@ public class User {
 	public void setStreet(String street) {
 		this.street = street;
 	}
-	public User(Integer id, String username, String firstname, String lastname, String city, Date birthdate,
-			Integer roleid, String street, String postcode, String phonenumber, String password) {
+	public User(String username, String firstname, String lastname, String city, Date birthdate,
+			Integer roleid, String street, String postcode, String phonenumber, String password, String passwordConfirm,
+			String email) {
 		super();
 		this.id=id;
 		this.username = username;
@@ -93,8 +109,10 @@ public class User {
 		this.roleid = roleid;
 		this.phonenumber = phonenumber;
 		this.password = password;
+		this.passwordConfirm = passwordConfirm;
 		this.postcode = postcode;
 		this.street = street;
+		this.email = email;
 	}
 	public User() {
 		super();

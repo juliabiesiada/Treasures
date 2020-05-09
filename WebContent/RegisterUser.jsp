@@ -4,15 +4,17 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Register</title>
 </head>
 <body>
 <form action="RegisterUserServlet" method="post">
 	
 	<table>
 		<tr>
-			<td>ID:</td>
-			<td><input type="number" name="id">
+		<td>
+		<h3 style="color:red;">${message} </h3>
+		<h3 style="color:green;">${successMessage} </h3>
+			</td>
 		</tr>
 		<tr>
 			<td>Username:</td>
@@ -35,8 +37,9 @@
 			<td><input type="date" name="birthdate">
 		</tr>
 		<tr>
-			<td>Role id:</td>
-			<td><input type="number" name="roleid">
+			<td>Role:</td>
+			<td><input type="radio" name="roleid" value="1"> Lender
+			<td><input type="radio" name="roleid" value="2"> Borrower 
 		</tr>
 		<tr>
 			<td>Street:</td>
@@ -51,8 +54,16 @@
 			<td><input type="text" name="phonenumber">
 		</tr>
 		<tr>
+			<td>Email:</td>
+			<td><input type="text" name="email">
+		</tr>
+		<tr>
 			<td>Password:</td>
-			<td><input type="text" name="password">
+			<td><input type="password" name="password">
+		</tr>
+		<tr>
+			<td>Confirm password:</td>
+			<td><input type="password" name="passwordconf">
 		</tr>
 		<tr>
 			<td><input type="submit" value="Register" name="conf"></td>

@@ -1,4 +1,4 @@
-package dao;
+package pl.ue.poznan.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
