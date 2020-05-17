@@ -7,8 +7,8 @@
 <title>Login</title>
 </head>
 <body>
-<form action="LoginServlet" method="post">
-	
+<form action="UserControllerServlet" method="get">
+	<input type="hidden" name="command" value="LOGIN">	
 	<table>
 	<tr>
 	<td>

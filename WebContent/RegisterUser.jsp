@@ -7,8 +7,8 @@
 <title>Register</title>
 </head>
 <body>
-<form action="RegisterUserServlet" method="post">
-	
+<form action="UserControllerServlet" method="get">
+	<input type="hidden" name="command" value="REGISTER">
 	<table>
 		<tr>
 		<td>

@@ -6,7 +6,9 @@ import pl.ue.poznan.model.User;
 
 public interface UserService {
 	
-	User getUser(int id);
+	User getUser(String username, String password);
+	User getUserByUsername(String username);
 	String addUser(User user);
+	String updateUser(User user);
 
 }

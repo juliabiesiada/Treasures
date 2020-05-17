@@ -18,9 +18,11 @@ public class UserServiceImpl implements UserService {
 
 
 	@Override
-	public User getUser(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public User getUser(String username, String password) {
+		User user;
+		UserDAOImpl udi = new UserDAOImpl();
+		user = udi.getUser(username, password);
+		return user;
 	}
 
 	@Override
@@ -29,6 +31,21 @@ public class UserServiceImpl implements UserService {
 		UserDAOImpl udi = new UserDAOImpl();
 		result = udi.addUser(user);
 		return result;
+	}
+	
+	public String updateUser(User user) {
+		String result;
+		UserDAOImpl udi = new UserDAOImpl();
+		result = udi.updateUser(user);
+		return result;
+	}
+	
+	@Override
+	public User getUserByUsername(String username) {
+		User user;
+		UserDAOImpl udi = new UserDAOImpl();
+		user = udi.getUserByUsername(username);
+		return user;
 	}
 	
 	public String validateRegistration(User user) {
@@ -73,6 +90,40 @@ public class UserServiceImpl implements UserService {
 		
 		return errorMsg;
 		
+	}
+	
+	public String validateUpdate(User user) {
+		String errorMsg = "";
+		String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+		
+		String uname = user.getUsername();
+		String fname = user.getFirstname();
+		String lname = user.getLastname();
+		Date bdate = user.getBirthdate();
+		String city = user.getCity();
+		String street = user.getStreet();
+		Integer rid = user.getRoleid();
+		String pcode = user.getPostcode();
+		String pnumber = user.getPhonenumber();
+		String password = user.getPassword();
+		String email = user.getEmail();
+		
+		if (uname.equals("") || fname.equals("") || lname.equals("") || bdate == null ||
+		city.equals("") || street.equals("") || rid == null || pcode.equals("") || pnumber.equals("")
+		|| password.equals("") || email.equals("")) {
+			
+			errorMsg = "Input incomplete";
+			return errorMsg;
+		}
+		
+		if (!email.matches(regex)) {
+			
+			errorMsg = "Incorrect email address";
+			return errorMsg;
+			
+		}
+		
+		return errorMsg;
 	}
 	
 }

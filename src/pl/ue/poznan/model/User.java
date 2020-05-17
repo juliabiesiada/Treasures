@@ -100,7 +100,6 @@ public class User {
 			Integer roleid, String street, String postcode, String phonenumber, String password, String passwordConfirm,
 			String email) {
 		super();
-		this.id=id;
 		this.username = username;
 		this.firstname = firstname;
 		this.lastname = lastname;
@@ -110,6 +109,22 @@ public class User {
 		this.phonenumber = phonenumber;
 		this.password = password;
 		this.passwordConfirm = passwordConfirm;
+		this.postcode = postcode;
+		this.street = street;
+		this.email = email;
+	}
+	public User(String username, String firstname, String lastname, String city, Date birthdate,
+			Integer roleid, String street, String postcode, String phonenumber, String password,
+			String email) {
+		super();
+		this.username = username;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.city = city;
+		this.birthdate = birthdate;
+		this.roleid = roleid;
+		this.phonenumber = phonenumber;
+		this.password = password;
 		this.postcode = postcode;
 		this.street = street;
 		this.email = email;
