@@ -27,7 +27,17 @@
 			</form><p>
 			<h3>About me:</h3>
 			City: ${city}
-		</div>
+		</div><p>
+		<form action=OfferControllerServlet method="get">
+			<input type="hidden" name="username" value=<%=thisUser.getUsername()%>>
+			<input type="hidden" name="command" value="ADD_OFFER_FORM">
+			<input type="submit" value="Add offer">
+		</form>
+		<form action=OfferControllerServlet method="get">
+			<input type="hidden" name="username" value=<%=thisUser.getUsername()%>>
+			<input type="hidden" name="command" value="GET_USERS_OFFERS">
+			<input type="submit" value="My offers">
+		</form>
 		
 	</body>
 </html>

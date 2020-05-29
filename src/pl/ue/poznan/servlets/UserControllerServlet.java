@@ -79,21 +79,21 @@ public class UserControllerServlet extends HttpServlet {
 		try {
 			birthDate = sdf.parse(birthdateStr);
 			java.sql.Date birthDateSQL = extra.convertDate(birthDate);
-			String username = request.getParameter("username");
-			String firstname = request.getParameter("firstname");
-			String lastname = request.getParameter("lastname");
-			String city = request.getParameter("city");
+			String username = request.getParameter("username").trim();
+			String firstname = request.getParameter("firstname").trim();
+			String lastname = request.getParameter("lastname").trim();
+			String city = request.getParameter("city").trim();
 			String roleidvalid = request.getParameter("roleid");
 			Integer roleid = null;
 			if (!(roleidvalid == null)) {
 				roleid = Integer.parseInt(roleidvalid);
 			}
-			String street = request.getParameter("street");
-			String postcode = request.getParameter("postcode");
-			String phonenumber = request.getParameter("phonenumber");
-			String password = request.getParameter("password");
-			String passwordconf = request.getParameter("passwordconf");
-			String email = request.getParameter("email");
+			String street = request.getParameter("street").trim();
+			String postcode = request.getParameter("postcode").trim();
+			String phonenumber = request.getParameter("phonenumber").trim();
+			String password = request.getParameter("password").trim();
+			String passwordconf = request.getParameter("passwordconf").trim();
+			String email = request.getParameter("email").trim();
 
 			User user = new User(username, firstname, lastname, city, birthDateSQL, roleid, street, postcode,
 					phonenumber, password, passwordconf, email);
@@ -115,8 +115,8 @@ public class UserControllerServlet extends HttpServlet {
 
 	private void login(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
+		String username = request.getParameter("username").trim();
+		String password = request.getParameter("password").trim();
 		User u = usi.getUser(username, password);
 		u = usi.getUser(username, password);
 		if (u != null && u.getUsername() != null) {
@@ -175,21 +175,21 @@ public class UserControllerServlet extends HttpServlet {
 	
 	private void saveUpdate(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		Extra extra = new Extra();
-		String username = request.getParameter("username");
+		String username = request.getParameter("username").trim();
 		User user = usi.getUserByUsername(username);
-		String fname = request.getParameter("fname");
-		String lname = request.getParameter("lname");
+		String fname = request.getParameter("fname").trim();
+		String lname = request.getParameter("lname").trim();
 		String birthdateStr = request.getParameter("birthdate");
 		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 		Date bdate = sdf.parse(birthdateStr);
 		java.sql.Date bdateSQL = extra.convertDate(bdate);
-		String city = request.getParameter("city");
-		String street = request.getParameter("street");
-		String pcode = request.getParameter("postCode");
-		String phoneNr = request.getParameter("phoneNr");
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
-		String passwordConf = request.getParameter("passwordConf");
+		String city = request.getParameter("city").trim();
+		String street = request.getParameter("street").trim();
+		String pcode = request.getParameter("postCode").trim();
+		String phoneNr = request.getParameter("phoneNr").trim();
+		String email = request.getParameter("email").trim();
+		String password = request.getParameter("password").trim();
+		String passwordConf = request.getParameter("passwordConf").trim();
 		
 		user.setFirstname(fname);
 		user.setLastname(lname);

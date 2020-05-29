@@ -58,12 +58,12 @@ public class UserDAOImpl implements UserDAO {
 				u.setFirstname(rs.getString(3));
 				u.setLastname(rs.getString(4));
 				u.setCity(rs.getString(5));
-				u.setBirthdate(rs.getDate(6));
-				u.setRoleid(rs.getInt(7));
-				u.setStreet(rs.getString(8));
-				u.setPostcode(rs.getString(9));
-				u.setPhonenumber(rs.getString(10));
-				u.setPassword(rs.getString(11));
+				u.setBirthdate(rs.getDate(9));
+				u.setRoleid(rs.getInt(11));
+				u.setStreet(rs.getString(6));
+				u.setPostcode(rs.getString(7));
+				u.setPhonenumber(rs.getString(8));
+				u.setPassword(rs.getString(10));
 				u.setEmail(rs.getString(12));
 
 			}
@@ -96,12 +96,12 @@ public class UserDAOImpl implements UserDAO {
 				u.setFirstname(rs.getString(3));
 				u.setLastname(rs.getString(4));
 				u.setCity(rs.getString(5));
-				u.setBirthdate(rs.getDate(6));
-				u.setRoleid(rs.getInt(7));
-				u.setStreet(rs.getString(8));
-				u.setPostcode(rs.getString(9));
-				u.setPhonenumber(rs.getString(10));
-				u.setPassword(rs.getString(11));
+				u.setBirthdate(rs.getDate(9));
+				u.setRoleid(rs.getInt(11));
+				u.setStreet(rs.getString(6));
+				u.setPostcode(rs.getString(7));
+				u.setPhonenumber(rs.getString(8));
+				u.setPassword(rs.getString(10));
 				u.setEmail(rs.getString(12));
 
 			}
