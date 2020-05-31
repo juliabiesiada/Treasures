@@ -53,19 +53,21 @@ public class UserControllerServlet extends HttpServlet {
 				case "PROFILE":
 					getUserProfile(request, response);
 					break;
+					
 				case "EDIT_PROFILE":
 					updateProfile(request, response);
 					break;
+					
 				case "SAVE_NEW_DATA":
 					saveUpdate(request, response);
 					break;
+					
 				}
 
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
-		;
+		};
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -154,11 +156,13 @@ public class UserControllerServlet extends HttpServlet {
 	private void getUserProfile(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		User user = new User();
 		String username = "";
+		String loggedUsername;
 		String fname;
 		String lname;
 		String city;
 		Integer rid;
 		String role;
+		loggedUsername = request.getParameter("logged_user");
 		username = request.getParameter("username");
 		if (username.isEmpty()) {
 			request.getRequestDispatcher("Welcome.jsp").forward(request, response);
@@ -174,6 +178,7 @@ public class UserControllerServlet extends HttpServlet {
 		} else {
 			role = "Borrower";
 		}
+		request.setAttribute("logged_user", loggedUsername);
 		request.setAttribute("user", user);
 		request.setAttribute("username", username);
 		request.setAttribute("fname", fname);

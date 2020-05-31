@@ -127,6 +127,7 @@ public class OfferControllerServlet extends HttpServlet {
 	
 	private void getOfferDetails(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String id = request.getParameter("offer_id");
+		String loggedUser = request.getParameter("logged_user");
 		Integer oid = Integer.parseInt(id);
 		Offer offer = osi.getOfferById(oid);
 		CategoryServiceImpl csi = new CategoryServiceImpl();
@@ -137,6 +138,7 @@ public class OfferControllerServlet extends HttpServlet {
 				csi.getCategoryById(offer.getCategories_cid()), offer.getBase64Image());
 		
 		request.setAttribute("offer", opo);
+		request.setAttribute("logged_user", loggedUser);
 		request.getRequestDispatcher("OfferDetails.jsp").forward(request, response);
 		
 	}

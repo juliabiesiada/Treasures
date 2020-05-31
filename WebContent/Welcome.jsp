@@ -38,6 +38,7 @@
 					<p>${offer.category_name}</p>
 					<p><form action=OfferControllerServlet method="get">
 							<input type="hidden" name="offer_id" value=${offer.oid }>
+							<input type="hidden" name="logged_user" value="<%=thisUser.getUsername()%>">
 							<input type="hidden" name="command" value="OFFER_DETAILS">
 							<input type="submit" value="See details">
 						</form>
