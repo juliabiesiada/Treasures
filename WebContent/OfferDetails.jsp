@@ -15,6 +15,9 @@
 			<td><%=thisOffer.getTitle()%>
 		</tr>
 		<tr>
+			<td><%=thisOffer.getDescription()%>
+		</tr>
+		<tr>
 			<td><%=thisOffer.getCategory_name()%>
 		</tr>
 		<tr>
@@ -22,6 +25,18 @@
 		</tr>
 		<tr>
 			<td><%=thisOffer.getPrice()%>
+		</tr>
+		<tr>
+			<td><img src="data:image/jpg;base64,<%=thisOffer.getBase64Image()%>" width="240" height="300"/>
+		</tr>
+		<tr>
+			<td>
+				<form action=UserControllerServlet method="get">
+					<input type="hidden" name="command" value="PROFILE">
+					<input type="hidden" name="username" value="<%=thisOffer.getUsers_username()%>">
+					<input type="submit" name="submit" value="See user's profile">
+				</form>
+			</td>
 		</tr>
 	</table>
 </body>

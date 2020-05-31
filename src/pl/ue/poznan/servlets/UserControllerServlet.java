@@ -3,7 +3,9 @@ package pl.ue.poznan.servlets;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,7 +16,10 @@ import javax.servlet.http.HttpServletResponse;
 import pl.ue.poznan.dao.UserDAO;
 import pl.ue.poznan.dao.UserDAOImpl;
 import pl.ue.poznan.model.Extra;
+import pl.ue.poznan.model.Offer;
+import pl.ue.poznan.model.OfferPresentationObject;
 import pl.ue.poznan.model.User;
+import pl.ue.poznan.service.OfferServiceImpl;
 import pl.ue.poznan.service.UserServiceImpl;
 
 /**
@@ -120,8 +125,25 @@ public class UserControllerServlet extends HttpServlet {
 		User u = usi.getUser(username, password);
 		u = usi.getUser(username, password);
 		if (u != null && u.getUsername() != null) {
-			request.setAttribute("user", u);
-			request.setAttribute("username", u.getUsername());
+			
+			//getting 3 newest offers from users localization
+			OfferServiceImpl osi = new OfferServiceImpl();
+			String city = u.getCity();
+			Extra extra = new Extra();
+			List<Offer> users_offers = new ArrayList<Offer>();
+			List<OfferPresentationObject> offers_list = new ArrayList<OfferPresentationObject>();
+			users_offers = osi.getNewestOffers(city, username);
+			if (users_offers.size() > 0 ) {
+				offers_list = extra.changeToOPO(users_offers);
+				
+				request.setAttribute("user", u);
+				request.setAttribute("username", u.getUsername());
+				request.setAttribute("offers", offers_list);
+				request.setAttribute("message", "Newest offers in " + u.getCity() + ": ");
+			}else {
+				request.setAttribute("message", "No new offers");
+			}
+			
 			request.getRequestDispatcher("Welcome.jsp").forward(request, response);
 		} else {
 			request.setAttribute("message", "Data not found");

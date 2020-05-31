@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="Treasures">
+        
+    <wb-module deploy-name="Treasures_back">
+                
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+                
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="Treasures"/>
-        <property name="java-output-path" value="/Treasures/build/classes"/>
+                
+        <property name="java-output-path" value="/Treasures_back/build/classes"/>
+        <property name="context-root" value="Treasures_back"/>
+            
     </wb-module>
+    
 </project-modules>

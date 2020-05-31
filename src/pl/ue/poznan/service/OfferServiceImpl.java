@@ -1,5 +1,7 @@
 package pl.ue.poznan.service;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +11,7 @@ import pl.ue.poznan.model.Offer;
 public class OfferServiceImpl implements OfferService {
 	
 	@Override
-	public Offer getOfferById(Integer id) {
+	public Offer getOfferById(Integer id) throws IOException {
 		OfferDAOImpl odi = new OfferDAOImpl();
 		Offer offer = odi.getOfferById(id);
 		return offer;
@@ -20,7 +22,11 @@ public class OfferServiceImpl implements OfferService {
 		String error = validateOffer(offer);
 		if (error.isEmpty()) {
 			OfferDAOImpl odi = new OfferDAOImpl();
-			error = odi.addOffer(offer);
+			try {
+				error = odi.addOffer(offer);
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
 		}
 		return error;
 	}
@@ -55,7 +61,7 @@ public class OfferServiceImpl implements OfferService {
 	}
 
 	@Override
-	public List<Offer> getOffers() {
+	public List<Offer> getOffers() throws IOException {
 		OfferDAOImpl odi = new OfferDAOImpl();
 		List<Offer> offers = new ArrayList<Offer>();
 		offers = odi.getOffers();
@@ -63,7 +69,7 @@ public class OfferServiceImpl implements OfferService {
 	}
 
 	@Override
-	public List<Offer> getOffersByUsername(String username) {
+	public List<Offer> getOffersByUsername(String username) throws IOException {
 		OfferDAOImpl odi = new OfferDAOImpl();
 		List<Offer> offers = new ArrayList<Offer>();
 		offers = odi.getOffers();
@@ -80,6 +86,14 @@ public class OfferServiceImpl implements OfferService {
 			}
 		}
 		return users_offers;
+	}
+
+	@Override
+	public List<Offer> getNewestOffers(String city, String username) throws IOException {
+		OfferDAOImpl odi = new OfferDAOImpl();
+		List<Offer> offers = new ArrayList<Offer>();
+		offers = odi.getNewestOffers(city, username);
+		return offers;
 	}
 
 }

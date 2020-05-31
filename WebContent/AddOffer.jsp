@@ -39,6 +39,24 @@
 				</select></td>
 			</tr>
 			<tr>
+				<td>Add up to 5 pictures:</td>
+			</tr>
+			<tr>
+				<td><input type="file" name="myimg"></td>
+			</tr>
+			<tr>
+				<td><input type="file" name="myimg2"></td>
+			</tr>
+			<tr>
+				<td><input type="file" name="myimg3"></td>
+			</tr>
+			<tr>
+				<td><input type="file" name="myimg4"></td>
+			</tr>
+			<tr>
+				<td><input type="file" name="myimg5"></td>
+			</tr>
+			<tr>
 				<td><input type="submit" value="Add">
 			</tr>
 		</table>

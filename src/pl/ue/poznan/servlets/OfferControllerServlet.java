@@ -84,12 +84,17 @@ public class OfferControllerServlet extends HttpServlet {
 		Integer cid = Integer.parseInt(request.getParameter("category"));
 		Date dateAdded = new Date();
 		java.sql.Date dateAddedSQL = extra.convertDate(dateAdded);
+		String myloc = request.getParameter("myimg");
+		String myloc2 = request.getParameter("myimg2");
+		String myloc3 = request.getParameter("myimg3");
+		String myloc4 = request.getParameter("myimg4");
+		String myloc5 = request.getParameter("myimg5");
 		Float price = null;
 		if (!request.getParameter("price").isEmpty()) {
 			price = Float.parseFloat(request.getParameter("price"));
 		}
 		
-		Offer offer = new Offer(-1, title, desc, dateAddedSQL, price, username, cid);
+		Offer offer = new Offer(-1, title, desc, dateAddedSQL, price, username, cid, myloc, myloc2, myloc3, myloc4, myloc5);
 		
 		error = osi.addOffer(offer);
 		
@@ -108,33 +113,13 @@ public class OfferControllerServlet extends HttpServlet {
 	
 	private void getUsersOffers(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String username = request.getParameter("username");
-		UserServiceImpl usi = new UserServiceImpl();
-		//User user = usi.getUserByUsername(username);
-		//Integer uid = user.getId();
-		Offer tempOffer;
-		OfferPresentationObject tempOPO;
-		CategoryServiceImpl csi = new CategoryServiceImpl();
+		Extra extra = new Extra();
 		
 		List<Offer> users_offers = new ArrayList<Offer>();
 		List<OfferPresentationObject> offers_list = new ArrayList<OfferPresentationObject>();
 		users_offers = osi.getOffersByUsername(username);
 		
-		//transforming offers into OfferPresentationObjects
-		for (int i = 0; i < users_offers.size(); i++) {
-			tempOffer = users_offers.get(i);
-			
-			Integer oid = tempOffer.getOid();
-			String title = tempOffer.getTitle();
-			String description = tempOffer.getDescription();
-			Date dateAdded = tempOffer.getDateAdded();
-			Float price = tempOffer.getPrice();
-			String u_username = tempOffer.getUsers_username();
-			String cName = csi.getCategoryById(tempOffer.getCategories_cid());
-			
-			tempOPO = new OfferPresentationObject(oid, title, description, dateAdded,
-					price, u_username, cName);
-			offers_list.add(tempOPO);
-		}
+		offers_list = extra.changeToOPO(users_offers);
 		
 		request.setAttribute("offers", offers_list);
 		request.getRequestDispatcher("OffersList.jsp").forward(request, response);
@@ -149,7 +134,7 @@ public class OfferControllerServlet extends HttpServlet {
 		OfferPresentationObject opo = new OfferPresentationObject(oid,
 				offer.getTitle(), offer.getDescription(), offer.getDateAdded(),
 				offer.getPrice(), offer.getUsers_username(), 
-				csi.getCategoryById(offer.getCategories_cid()));
+				csi.getCategoryById(offer.getCategories_cid()), offer.getBase64Image());
 		
 		request.setAttribute("offer", opo);
 		request.getRequestDispatcher("OfferDetails.jsp").forward(request, response);

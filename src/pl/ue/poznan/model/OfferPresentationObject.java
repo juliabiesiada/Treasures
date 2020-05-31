@@ -13,6 +13,21 @@ public class OfferPresentationObject {
 	Float price;
 	String users_username;
 	String category_name;
+	byte[] imgData;
+	String base64Image;
+	
+	public String getBase64Image() {
+		return base64Image;
+	}
+	public void setBase64Image(String base64Image) {
+		this.base64Image = base64Image;
+	}
+	public byte[] getImgData() {
+		return imgData;
+	}
+	public void setImgData(byte[] imgData) {
+		this.imgData = imgData;
+	}
 	public Integer getOid() {
 		return oid;
 	}
@@ -68,6 +83,30 @@ public class OfferPresentationObject {
 		this.price = price;
 		this.users_username = users_username;
 		this.category_name = category_name;
+	}
+	public OfferPresentationObject(Integer oid, String title, String description, Date dateAdded, Float price,
+			String users_username, String category_name, byte[] imgData) {
+		super();
+		this.oid = oid;
+		this.title = title;
+		this.description = description;
+		this.dateAdded = dateAdded;
+		this.price = price;
+		this.users_username = users_username;
+		this.category_name = category_name;
+		this.imgData = imgData;
+	}
+	public OfferPresentationObject(Integer oid, String title, String description, Date dateAdded, Float price,
+			String users_username, String category_name, String base64Image) {
+		super();
+		this.oid = oid;
+		this.title = title;
+		this.description = description;
+		this.dateAdded = dateAdded;
+		this.price = price;
+		this.users_username = users_username;
+		this.category_name = category_name;
+		this.base64Image = base64Image;
 	}
 	
 }
