@@ -1,5 +1,6 @@
 package pl.ue.poznan.model;
 
+import java.io.File;
 import java.sql.Date;
 
 public class Offer {
@@ -18,6 +19,7 @@ public class Offer {
 	String myloc5;
 	byte[] imgData;
 	String base64Image;
+	File img1;
 	
 	public Offer() {
 		super();
@@ -76,6 +78,25 @@ public class Offer {
 		this.users_username = users_username;
 		this.categories_cid = categories_cid;
 		this.base64Image = base64Image;
+	}
+	//File from jsp
+	public Offer(Integer oid, String title, String description, Date dateAdded, Float price, String users_username,
+			Integer categories_cid, File img1) {
+		super();
+		this.oid = oid;
+		this.title = title;
+		this.description = description;
+		this.dateAdded = dateAdded;
+		this.price = price;
+		this.users_username = users_username;
+		this.categories_cid = categories_cid;
+		this.img1 = img1;
+	}
+	public File getImg1() {
+		return img1;
+	}
+	public void setImg1(File img1) {
+		this.img1 = img1;
 	}
 	public byte[] getImgData() {
 		return imgData;

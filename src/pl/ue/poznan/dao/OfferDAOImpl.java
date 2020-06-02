@@ -226,6 +226,8 @@ public class OfferDAOImpl implements OfferDAO {
 
 			while (resultSet.next()) {
 				Blob image = resultSet.getBlob("PICTURE1");
+				String base64Image = "";
+				if (image != null) {
 				InputStream inputStream = image.getBinaryStream();
                 ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
                 byte[] buffer = new byte[4096];
@@ -236,12 +238,12 @@ public class OfferDAOImpl implements OfferDAO {
                 }
                  
                 byte[] imageBytes = outputStream.toByteArray();
-                String base64Image = Base64.getEncoder().encodeToString(imageBytes);
+                base64Image = Base64.getEncoder().encodeToString(imageBytes);
                  
                  
                 inputStream.close();
                 outputStream.close();
-				
+				}
 				offers.add(new Offer(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3),
 						resultSet.getDate(4), resultSet.getFloat(5), resultSet.getString(8), resultSet.getInt(6), base64Image));
 			}

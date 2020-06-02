@@ -13,15 +13,17 @@
 	User thisUser = (User) request.getAttribute("user");
 %>
 <body style="color: grey;">
-
-	<h1>Hi ${username}! Welcome!</h1>
+	
+	<!--CHANGE!!!!!!!!!!!!!!!!!!!!-->
+	<h1>Hi ${logged_user}! Welcome!</h1>
 	<table>
 		<tr>
 			<td><a href="LogOut.jsp">Logout</a></td>
 			<td>
 				<form action="UserControllerServlet" method="get">
-					<input type="hidden" name="username" value="<%=thisUser.getUsername()%>"> 
-					<input type="hidden" name="command" value="PROFILE">
+					<!--CHANGE!!!!!!!!!!!!!!!!!!!!-->
+					<input type="hidden" name="logged_user" value="<%=thisUser.getUsername()%>"> 
+					<input type="hidden" name="command" value="MY_PROFILE">
 					<input type="submit" value="My profile">
 				</form>
 			</td>

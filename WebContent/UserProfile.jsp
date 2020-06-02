@@ -27,6 +27,20 @@
 			</form><p>
 		</div>
 		<div>
+			<form action=NotificationControllerServlet method="get">
+				<input type="hidden" name="logged_user" value="${logged_user}">
+				<input type="hidden" name="command" value="GET_MY_MESSAGES">
+				<input type="submit" value="My messages">
+			</form><p>
+		</div>
+		<div>
+			<form action=NotificationControllerServlet method="get">
+				<input type="hidden" name="logged_user" value="${logged_user}">
+				<input type="hidden" name="command" value="GET_MY_REQUESTS">
+				<input type="submit" value="My requests">
+			</form><p>
+		</div>
+		<div>
 			<form action=UserControllerServlet method="get">
 				<input type="hidden" name="username" value=<%=thisUser.getUsername()%>>
 				<input type="hidden" name="command" value="EDIT_PROFILE">

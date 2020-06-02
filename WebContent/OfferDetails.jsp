@@ -10,6 +10,7 @@
 		OfferPresentationObject thisOffer = (OfferPresentationObject) request.getAttribute("offer");
 	%>
 <body>
+	<h3>${message}</h3>
 	<table>
 		<tr>
 			<td><%=thisOffer.getTitle()%>
@@ -36,6 +37,17 @@
 					<input type="hidden" name="logged_user" value="${logged_user}">
 					<input type="hidden" name="username" value="<%=thisOffer.getUsers_username()%>">
 					<input type="submit" name="submit" value="See user's profile">
+				</form>
+			</td>
+			<td>
+				<form action=NotificationControllerServlet method="get">
+					<input type="date" name="date_req">
+					<input type="hidden" name="command" value="SEND_REQUEST">
+					<input type="hidden" name="logged_user" value="${logged_user}">
+					<input type="hidden" name="oid" value="<%=thisOffer.getOid()%>">
+					<input type="hidden" name="opo" value="${offer }">
+					<input type="hidden" name="username" value="<%=thisOffer.getUsers_username()%>">
+					<input type="submit" name="submit" value="Request item">
 				</form>
 			</td>
 		</tr>

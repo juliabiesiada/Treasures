@@ -61,7 +61,9 @@ public class UserControllerServlet extends HttpServlet {
 				case "SAVE_NEW_DATA":
 					saveUpdate(request, response);
 					break;
-					
+				case "MY_PROFILE":
+					getMyProfile(request,response);
+					break;
 				}
 
 			}
@@ -139,7 +141,8 @@ public class UserControllerServlet extends HttpServlet {
 				offers_list = extra.changeToOPO(users_offers);
 				
 				request.setAttribute("user", u);
-				request.setAttribute("username", u.getUsername());
+				//CHANGE!!!!!!!!!!!!!!!!!!
+				request.setAttribute("logged_user", u.getUsername());
 				request.setAttribute("offers", offers_list);
 				request.setAttribute("message", "Newest offers in " + u.getCity() + ": ");
 			}else {
@@ -152,7 +155,38 @@ public class UserControllerServlet extends HttpServlet {
 			request.getRequestDispatcher("Login.jsp").forward(request, response);
 		}
 	}
+	private void getMyProfile (HttpServletRequest request, HttpServletResponse response) throws Exception {
+		User user = new User();
+		String loggedUsername;
+		String fname;
+		String lname;
+		String city;
+		Integer rid;
+		String role;
+		loggedUsername = request.getParameter("logged_user");
+		if (loggedUsername.isEmpty()) {
+			request.getRequestDispatcher("Welcome.jsp").forward(request, response);
+		}
+		user = usi.getUserByUsername(loggedUsername);
+		fname = user.getFirstname();
+		lname = user.getLastname();
+		city = user.getCity();
+		rid = user.getRoleid();
 
+		if (rid == 1) {
+			role = "Lender";
+		} else {
+			role = "Borrower";
+		}
+		request.setAttribute("logged_user", loggedUsername);
+		request.setAttribute("user", user);
+		request.setAttribute("fname", fname);
+		request.setAttribute("lname", lname);
+		request.setAttribute("city", city);
+		request.setAttribute("role", role);
+		request.getRequestDispatcher("UserProfile.jsp").forward(request, response);
+	}
+	
 	private void getUserProfile(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		User user = new User();
 		String username = "";
